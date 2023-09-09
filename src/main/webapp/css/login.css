@@ -1,0 +1,330 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #2f31ef;
+  --light-blue: #b4e7f9;
+  --coral: #fe5f55;
+  --orange: #ee522e;
+  --soft-orange: #fbf7f0;
+  --grey: #f5f6f8;
+  --gradient: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+
+  --green: #00e676;
+  --red: #ff5252;
+}
+
+html,
+body {
+  height: 100%;
+  background-image: var(--gradient);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+}
+
+.main {
+  height: 100%;
+  width: 100%;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1.5em;
+  color: black;
+  font-family: Roboto;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  background-color: white;
+  color: var(--blue);
+  border-radius: 5px;
+  letter-spacing: 0.4em;
+  padding: 5px;
+  padding-left: 10px;
+}
+
+header h1 a {
+  all: unset;
+  cursor: default;
+}
+
+header span {
+  color: var(--coral);
+}
+
+header div a {
+  all: unset;
+  cursor: pointer;
+  font-size: 1.3em;
+}
+
+header div a:nth-child(1) {
+  margin-right: 1em;
+}
+
+header div a:nth-child(2) {
+  border: 2px solid black;
+  color: black;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+header div a:hover {
+  color: var(--coral);
+}
+
+/* Form Styling */
+
+.align-center {
+  /* margin-top: 1em; */
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.login-container {
+  width: 55%;
+  margin-bottom: 2em;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: start;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  box-sizing: border-box;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  border: none;
+}
+
+figure {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: none;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(137, 246, 254, 0.021),
+      rgba(102, 166, 255, 0.014)
+    ),
+    url(/AceBank/images/austin-distel-VvAcrVa56fc-unsplash.jpg);
+  width: 45%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 75%;
+}
+
+.login {
+  font-family: Cabin;
+  padding: 5% 5%;
+  margin-bottom: 7%;
+  width: 100%;
+  height: 100%;
+}
+
+.forgot-password {
+  position: relative;
+  text-align: center;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.forgot-password .forgot {
+  all: unset;
+  /* letter-spacing: 2px; */
+  border-radius: 40px;
+  user-select: none;
+  color: var(--red);
+}
+
+#signup-form {
+  margin: 0 5%;
+}
+
+.login h1 {
+  font-size: 2.5rem;
+  margin-top: 0.5em;
+  color: var(--blue);
+  margin-bottom: 1.2em;
+  text-align: center;
+  letter-spacing: 2px;
+  /* padding: 10px 30px; */
+}
+
+.login p {
+  text-align: center;
+  color: var(--red);
+}
+
+
+.form-control {
+  margin-bottom: 30px;
+  position: relative;
+  width: 100%;
+}
+
+.form-control input {
+  font-size: 15px;
+  color: #333;
+  border: none;
+  width: 100%;
+  outline: none;
+  background: white;
+  border: 1px solid rgba(31, 31, 31, 0.5);
+  border-radius: 10px;
+  margin: 30px 0;
+  padding: 0 10px;
+  height: 40px;
+  font-family: Lato;
+
+  display: block; /*Check by removing*/
+}
+
+.form-control i {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  visibility: hidden;
+}
+
+.form-control small {
+  position: absolute;
+  margin: 2px 15px;
+  top: -50%;
+  color: var(--red);
+  visibility: hidden;
+}
+
+.form-control.success input {
+  border: 2px solid var(--green);
+}
+
+.form-control.error input {
+  border: 2px solid var(--red);
+}
+
+.form-control.error small {
+  visibility: visible;
+}
+
+.form-control.success #correct {
+  color: var(--green);
+  visibility: visible;
+}
+
+.form-control.error #error {
+  color: var(--red);
+  visibility: visible;
+}
+
+.form-control input:focus {
+  border: none;
+  border: 1.5px solid var(--blue);
+}
+
+.label {
+  margin: 0 1em;
+}
+
+.input-box .last {
+  margin-bottom: 15px;
+}
+
+input[type="submit"] {
+  width: 50%;
+  margin: 0 auto;
+  color: white;
+  background: var(--blue);
+  outline: none;
+  padding: 1em 3em;
+  border-radius: 50px;
+  font-family: Roboto;
+  border: none;
+  margin-top: 50px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  line-height: 100%;
+
+  box-shadow: 0 2.8px 2.2px rgba(36, 36, 36, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.034), 0 12.5px 10px rgba(34, 34, 34, 0.06),
+    0 22.3px 17.9px rgba(31, 31, 31, 0.032),
+    0 23.8px 33.4px rgba(36, 36, 36, 0.014), 0 24px 80px rgba(41, 41, 41, 0.082);
+}
+
+#submitter:hover {
+  background: #225cfc
+    radial-gradient(circle, transparent 1%, var(--light-blue) 1%) center/15000%;
+}
+
+@media screen and (max-width: 780px) {
+  .align-center {
+    justify-content: unset;
+  }
+
+  .login-container {
+    width: 90%;
+    margin-bottom: 2em;
+    height: 100%;
+    margin-bottom: 25%;
+  }
+
+  header {
+    display: flex;
+    /* margin: 0 1em; */
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5em;
+    padding-bottom: 1em;
+    /* border: 1px solid white; */
+    /* width: 100%; */
+    color: black;
+  }
+
+  header h1 a {
+    cursor: pointer;
+  }
+
+  header div a {
+    all: unset;
+    cursor: pointer;
+    font-size: 1.3em;
+    display: flex;
+  }
+
+  header div a:nth-child {
+    /* padding: 5px 10px; */
+    margin: 0;
+    padding: 0;
+    /* border: none; */
+  }
+
+  header div a:nth-child(1) {
+    /* visibility: hidden; */
+    display: none;
+  }
+
+  figure {
+    display: none;
+  }
+}
