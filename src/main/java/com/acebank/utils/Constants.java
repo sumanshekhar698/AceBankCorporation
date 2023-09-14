@@ -2,6 +2,9 @@ package com.acebank.utils;
 
 public class Constants {
 
+	public static final String PROPERTIES_FILE = "/credentials.properties";
+	public static final String PROPERTY_NAME_FOR_H2_SCRIPT = "db.h2.script.path";
+
 //	EMAIL
 	public static final String DEFAULT_MAIL = "ace.bank.dev@gmail.com";
 	public static final String DEFAULT_MAIL_GOOGLE_APP_PASSWORD = "bypmdpfeswzsmhay";
