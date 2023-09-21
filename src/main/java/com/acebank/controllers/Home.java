@@ -119,7 +119,8 @@ public class Home extends HttpServlet {
 
 //						request.setAttribute("balance", model.getBalance());
 					session.setAttribute("balance", model.getBalance());
-					request.getRequestDispatcher("Home.jsp").forward(request, response);
+					response.sendRedirect("Home.jsp");
+//					request.getRequestDispatcher("Home.jsp").forward(request, response);
 				} else {
 					log.info("transfer failed");
 					response.sendRedirect("Home.jsp");

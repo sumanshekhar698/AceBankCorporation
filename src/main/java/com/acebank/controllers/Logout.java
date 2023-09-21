@@ -23,14 +23,14 @@ public class Logout extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		try {
-			BankUserDao userDao = new BankUserDao();
-			boolean closeDBConnection = userDao.closeDBConnection();
-			log.info("DB connection closed? :: " + closeDBConnection);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			BankUserDao userDao = new BankUserDao();
+//			boolean closeDBConnection = userDao.closeDBConnection();
+//			log.info("DB connection closed? :: " + closeDBConnection);
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 
 		HttpSession session = request.getSession();
 		session.invalidate();

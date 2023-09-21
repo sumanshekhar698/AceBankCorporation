@@ -115,6 +115,7 @@ public class BankUserDao {
 		String s = "insert into BANKUSERS (ACCOUNT_NO, FIRST_NAME, LAST_NAME, AADHAR_NO, EMAIL, PASSWORD, " + "Balance)"
 				+ "values (?,?,?,?,?,?,?)";
 
+		// SQL Injection Hacking
 		PreparedStatement pstmt = connection.prepareStatement(s);
 
 		pstmt.setInt(1, bankUserModel.getAccountNumber());
@@ -232,16 +233,16 @@ public class BankUserDao {
 			bankUserModel.setBalance(res.getInt(1));// fetching the balance and setting it to model
 		}
 		int balanceOfAccount1 = bankUserModel.getBalance();
-		int debitAmountFromAccount1 = bankUserModel.getTransferAmount();
+		int transferAmount = bankUserModel.getTransferAmount();
 
-		if (balanceOfAccount1 < debitAmountFromAccount1) {// checking for enough funds to transfer
+		if (balanceOfAccount1 < transferAmount) {// checking for enough funds to transfer
 			log.warning("insufficient funds for transfer");
 			return false;
 		}
 
 		String queryUpdateBalanceOfBankUsers = "update BANKUSERS set BALANCE=? where ACCOUNT_NO = ?";
 
-		balanceOfAccount1 -= debitAmountFromAccount1; // Subtract the transfer amount with the current balance
+		balanceOfAccount1 -= transferAmount; // Subtract the transfer amount with the current balance
 		bankUserModel.setBalance(balanceOfAccount1);
 
 		pstmt = connection.prepareStatement(queryUpdateBalanceOfBankUsers);
@@ -255,7 +256,7 @@ public class BankUserDao {
 		pstmt = this.connection.prepareStatement(queryInsertTransactionEntryForAccount1);
 		pstmt.setInt(1, this.bankUserModel.getAccountNumber());
 		pstmt.setInt(2, this.bankUserModel.getTransferToAccount());
-		pstmt.setInt(3, debitAmountFromAccount1);
+		pstmt.setInt(3, transferAmount);
 		pstmt.setInt(4, balanceOfAccount1);
 		int insertIntoTransactionForAccount1 = pstmt.executeUpdate();
 		if (insertIntoTransactionForAccount1 > 0)
@@ -276,7 +277,7 @@ public class BankUserDao {
 
 			if (res.next()) {
 				int balanceOfAccount2 = res.getInt(1); // Adding
-				balanceOfAccount2 += debitAmountFromAccount1;
+				balanceOfAccount2 += transferAmount;
 
 				pstmt = connection.prepareStatement(queryUpdateBalanceOfBankUsers);
 				pstmt.setInt(1, balanceOfAccount2);
@@ -287,7 +288,7 @@ public class BankUserDao {
 				pstmt = connection.prepareStatement(queryInsertTransactionEntryForAccount2);
 				pstmt.setInt(1, bankUserModel.getTransferToAccount());
 				pstmt.setInt(2, bankUserModel.getAccountNumber());
-				pstmt.setInt(3, debitAmountFromAccount1);
+				pstmt.setInt(3, transferAmount);
 				pstmt.setInt(4, balanceOfAccount2);
 
 				int insertIntoTransactionForAccount2 = pstmt.executeUpdate();

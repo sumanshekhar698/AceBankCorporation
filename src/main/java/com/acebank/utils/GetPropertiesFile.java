@@ -24,7 +24,7 @@ public final class GetPropertiesFile {
 		}
 	}
 
-	public static GetPropertiesFile getInstance() {
+	public synchronized static GetPropertiesFile getInstance() {
 		if (getPropertiesFile == null) {
 			getPropertiesFile = new GetPropertiesFile();
 		}

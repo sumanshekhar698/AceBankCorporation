@@ -12,7 +12,7 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 import lombok.extern.java.Log;
 
 @Log
-public final class ConnectionManager {
+public final class ConnectionManager {// Singelton Pattern
 	private static ConnectionManager connectionManager;
 	private Connection connection;
 
@@ -30,7 +30,7 @@ public final class ConnectionManager {
 		}
 	}
 
-	public static ConnectionManager getInstance() {
+	public synchronized static ConnectionManager getInstance() {
 		if (connectionManager == null) {
 			connectionManager = new ConnectionManager();
 		}
@@ -48,7 +48,7 @@ public final class ConnectionManager {
 			 * The Class.forName() method loads the H2 driver class into the Java runtime
 			 * environment. This is necessary before you can connect to an H2 database.
 			 */
-			
+
 			// Create a DB Connection
 			Connection connection = DriverManager.getConnection(Constants.H2_IN_MEMORY_CONNECTION_URL);
 			log.info("Established DB connection");
