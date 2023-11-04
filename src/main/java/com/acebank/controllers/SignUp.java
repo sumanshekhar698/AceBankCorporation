@@ -23,9 +23,10 @@ import lombok.extern.java.Log;
  */
 @Log
 @WebServlet("/SignUp")
-public class SignUp extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class SignUp extends HttpServlet {//servlet
+	private static final long serialVersionUID = 1L;//to make it serializable
 
+	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -78,6 +79,7 @@ public class SignUp extends HttpServlet {
 				session.setAttribute("firstName", model.getFirstName());
 				session.setAttribute("balance", model.getBalance());
 				session.setAttribute("email", model.getEmail());
+				
 
 				response.sendRedirect("/AceBankCorporation/Home.jsp");
 			} else {
